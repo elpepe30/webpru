@@ -1,0 +1,189 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>SysInfo Pro - Desarrollo Web y Bases de Datos</title>
+    <link rel="stylesheet" href="styles.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css">
+</head>
+<body>
+    <header>
+        <nav>
+            <div class="logo">SysInfo Pro</div>
+            <ul class="nav-links">
+                <li><a href="index.html">Inicio</a></li>
+                <li><a href="servicios.html">Servicios</a></li>
+                <li><a href="ofertas.html">Ofertas</a></li>
+                <li><a href="herramientas.html">Herramientas</a></li>
+                <li><a href="contacto.html">Contacto</a></li>
+                <li><a href="#trabajar-con-nosotros">Si quieres trabajar con nosotros</a></li>
+            </ul>
+        </nav>
+    </header>
+
+    <div class="discount-badge" id="offer-notification">
+        <span>Código: SYSINFO30</span>
+        <button onclick="closeNotification()">×</button>
+    </div>
+
+    <section class="carousel">
+        <div class="slides">
+            <div class="slide">
+                <img src="Imagenes/carrusel1.jpg" alt="Verificación de Código">
+                <div class="caption">Verificación de Código</div>
+            </div>
+            <div class="slide">
+                <img src="Imagenes/carrusel2.jpg" alt="Servidores y Infraestructura">
+                <div class="caption">Servidores y Infraestructura</div>
+            </div>
+            <div class="slide">
+                <img src="Imagenes/carrusel3.jpg" alt="Tecnología Avanzada">
+                <div class="caption">Tecnología Avanzada</div>
+            </div>
+            <div class="slide">
+                <img src="Imagenes/database.jpg" alt="Bases de Datos">
+                <div class="caption">Bases de Datos</div>
+            </div>
+            <div class="slide">
+                <img src="Imagenes/webdev.jpg" alt="Desarrollo Web">
+                <div class="caption">Desarrollo Web</div>
+            </div>
+        </div>
+        <div class="hero-text">
+            <h1>Soluciones Informáticas Profesionales</h1>
+            <p>Desarrollo de software, bases de datos y soporte técnico para empresas y emprendedores. Más de 5 años ayudando a negocios locales a digitalizarse.</p>
+        </div>
+    </section>
+
+    <section class="cta-section">
+        <a href="servicios.html" class="cta-btn">Ver nuestros servicios</a>
+    </section>
+
+    <section id="quick-services" class="quick-services">
+        <h2>Lo que hacemos</h2>
+        <div class="quick-services-grid">
+            <div class="quick-service">
+                <i class="fas fa-code"></i>
+                <h3>Páginas Web</h3>
+                <p>Sitios web responsive, tiendas online y aplicaciones web a medida</p>
+                <a href="servicios.html" class="btn">Ver trabajos</a>
+            </div>
+            <div class="quick-service">
+                <i class="fas fa-database"></i>
+                <h3>Bases de Datos</h3>
+                <p>MySQL, PostgreSQL, MongoDB. Optimización y migraciones</p>
+                <a href="servicios.html" class="btn">Ver servicios</a>
+            </div>
+            <div class="quick-service">
+                <i class="fas fa-tools"></i>
+                <h3>Mantenimiento</h3>
+                <p>Actualizaciones, corrección de bugs y mejoras continuas</p>
+                <a href="servicios.html" class="btn">Saber más</a>
+            </div>
+        </div>
+    </section>
+
+    <section id="features" class="features">
+        <h2>Por qué trabajar con nosotros</h2>
+        <div class="features-grid">
+            <div class="feature-card">
+                <i class="fas fa-clock"></i>
+                <h3>Entregas a tiempo</h3>
+                <p>Compromiso real con fechas de entrega. No prometemos lo imposible.</p>
+            </div>
+            <div class="feature-card">
+                <i class="fas fa-handshake"></i>
+                <h3>Comunicación directa</h3>
+                <p>Hablas directamente con los desarrolladores, no con vendedores.</p>
+            </div>
+            <div class="feature-card">
+                <i class="fas fa-graduation-cap"></i>
+                <h3>Experiencia comprobada</h3>
+                <p>Hemos trabajado con más de 50 proyectos locales exitosos.</p>
+            </div>
+            <div class="feature-card">
+                <i class="fas fa-dollar-sign"></i>
+                <h3>Precios justos</h3>
+                <p>Sin sorpresas. Presupuestos detallados y sin letra pequeña.</p>
+            </div>
+        </div>
+    </section>
+
+    <section id="cta-contact" class="cta-contact">
+        <h2>¿Tienes un proyecto en mente?</h2>
+        <p>Hablemos de tu idea. La primera consulta es gratuita y sin compromiso.</p>
+        <div class="cta-buttons">
+            <a href="contacto.html" class="btn btn-primary">
+                <i class="fas fa-envelope"></i> Cuéntanos tu proyecto
+            </a>
+            <a href="https://wa.me/0" target="_blank" class="btn btn-whatsapp">
+                <i class="fab fa-whatsapp"></i> WhatsApp
+            </a>
+        </div>
+    </section>
+
+    <section id="about" class="about">
+        <h2>Sobre SysInfo Pro</h2>
+        <p>Somos un equipo pequeño pero experimentado de desarrolladores que entendemos los desafíos reales de los negocios locales. Empezamos en 2021 ayudando a comercios y emprendedores a tener presencia online, y desde entonces hemos crecido junto con nuestros clientes.</p>
+        <p>Trabajamos principalmente con tecnologías probadas como PHP, MySQL, JavaScript y frameworks modernos. Creemos en soluciones prácticas que realmente funcionen, no en modas tecnológicas. Trabajamos con usuarios de todo el mundo que quieren ayudar.</p>
+    </section>
+
+    <section id="testimonials" class="testimonials">
+        <h2>Lo que dicen nuestros clientes</h2>
+        <div class="testimonial-grid">
+            <div class="testimonial">
+                <p>"Necesitaba un sistema de inventario para mi tienda y me hicieron exactamente lo que pedía. Ahora controlo todo desde mi teléfono. Excelente trabajo."</p>
+                <cite>- Ana García, Tienda de Ropa</cite>
+            </div>
+            <div class="testimonial">
+                <p>"Mi página web anterior era un desastre. Me hicieron una nueva desde cero y ahora recibo pedidos todos los días. La inversión valió la pena."</p>
+                <cite>- Miguel Rodríguez, Restaurante</cite>
+            </div>
+            <div class="testimonial">
+                <p>"Tenía una base de datos antigua que se caía todo el tiempo. La migraron a algo moderno y ahora funciona perfecto. Profesionales de verdad."</p>
+                <cite>- Laura Martínez, Consultora</cite>
+            </div>
+        </div>
+    </section>
+
+    <section id="trabajar-con-nosotros" class="trabajar-section">
+        <h2>Si quieres trabajar con nosotros</h2>
+        <p>Únete a nuestro equipo global. Trabajamos con usuarios de todo el mundo que quieren ayudar.</p>
+        <form id="trabajar-form" action="#" method="post">
+            <label for="nombre">Nombre:</label>
+            <input type="text" id="nombre" name="nombre" required>
+            <label for="email">Email:</label>
+            <input type="email" id="email" name="email" required>
+            <label for="mensaje">Mensaje:</label>
+            <textarea id="mensaje" name="mensaje" required></textarea>
+            <button type="submit">Enviar</button>
+        </form>
+    </section>
+
+    <footer id="contact">
+        <p>&copy; 2026 SysInfo Pro. Todos los derechos reservados. | Contacto: info@sysinfopro.com | Tel: 8492844996</p>
+        <div class="social-links">
+            <a href="https://wa.me/0" target="_blank"><i class="fab fa-whatsapp"></i> WhatsApp</a>
+            <a href="https://instagram.com/sysinfopro" target="_blank"><i class="fab fa-instagram"></i> Instagram</a>
+            <a href="https://facebook.com/sysinfopro" target="_blank"><i class="fab fa-facebook"></i> Facebook</a>
+        </div>
+    </footer>
+
+    <script>
+        function closeNotification() {
+            document.getElementById('offer-notification').style.display = 'none';
+        }
+
+        document.getElementById('trabajar-form').addEventListener('submit', function(e) {
+            e.preventDefault();
+            const nombre = document.getElementById('nombre').value;
+            const email = document.getElementById('email').value;
+            const mensaje = document.getElementById('mensaje').value;
+            const text = `Hola, quiero trabajar con ustedes. Nombre: ${nombre}, Email: ${email}, Mensaje: ${mensaje}`;
+            const url = `https://wa.me/8492844996?text=${encodeURIComponent(text)}`;
+            window.open(url, '_blank');
+        });
+    </script>
+</body>
+</html>
