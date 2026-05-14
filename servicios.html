@@ -1,0 +1,86 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Servicios - Sistemas Informáticos</title>
+    <link rel="stylesheet" href="styles.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css">
+</head>
+<body>
+    <header>
+        <nav>
+            <div class="logo">SysInfo Pro</div>
+            <ul class="nav-links">
+                <li><a href="index.html">Inicio</a></li>
+                <li><a href="servicios.html">Servicios</a></li>
+                <li><a href="ofertas.html">Ofertas</a></li>
+                <li><a href="herramientas.html">Herramientas</a></li>
+                <li><a href="contacto.html">Contacto</a></li>
+            </ul>
+        </nav>
+    </header>
+
+    <div class="discount-badge" id="offer-notification">
+        <span>Código: SYSINFO30</span>
+        <button onclick="closeNotification()">×</button>
+    </div>
+
+    <section id="services" class="services">
+        <h2>Nuestros Servicios</h2>
+        <div class="service-grid">
+            <div class="service-card">
+                <i class="fas fa-database"></i>
+                <img src="Imagenes/database.jpg" alt="Base de datos" class="service-img">
+                <h3>Creación de Bases de Datos</h3>
+                <p>Te ayudamos a crear y organizar tus bases de datos para que todo esté ordenado y funcione bien.</p>
+                <a href="contacto.html?servicio=desarrollo" class="btn btn-contact">
+                    <i class="fas fa-envelope"></i> Más Información
+                </a>
+            </div>
+            <div class="service-card">
+                <i class="fas fa-code"></i>
+                <img src="Imagenes/webdev.jpg" alt="Desarrollo web" class="service-img">
+                <h3>Desarrollo de Páginas Web</h3>
+                <p>Creamos tu sitio web desde cero, haciéndolo bonito y fácil de usar para tus visitantes.</p>
+                <a href="contacto.html?servicio=desarrollo" class="btn btn-contact">
+                    <i class="fas fa-envelope"></i> Más Información
+                </a>
+            </div>
+            <div class="service-card">
+                <i class="fas fa-check-circle"></i>
+                <img src="Imagenes/code.jpg" alt="Verificación de código" class="service-img">
+                <h3>Verificación de Código</h3>
+                <p>Revisamos tu código para encontrar errores y asegurarnos de que sea seguro y confiable.</p>
+                <a href="contacto.html?servicio=soporte" class="btn btn-contact">
+                    <i class="fas fa-envelope"></i> Más Información
+                </a>
+            </div>
+            <div class="service-card">
+                <i class="fas fa-rocket"></i>
+                <img src="Imagenes/servers.jpg" alt="Mejora de código" class="service-img">
+                <h3>Mejora de Código</h3>
+                <p>Tomamos tu código existente y lo hacemos mejor, más rápido y fácil de mantener.</p>
+                <a href="contacto.html?servicio=mantenimiento" class="btn btn-contact">
+                    <i class="fas fa-envelope"></i> Más Información
+                </a>
+            </div>
+        </div>
+    </section>
+
+    <footer>
+        <p>&copy; 2026 SysInfo Pro. Todos los derechos reservados. | Contacto: info@sysinfopro.com | Tel: 8492844996</p>
+        <div class="social-links">
+            <a href="https://wa.me/0" target="_blank"><i class="fab fa-whatsapp"></i> WhatsApp</a>
+            <a href="https://instagram.com/sysinfopro" target="_blank"><i class="fab fa-instagram"></i> Instagram</a>
+            <a href="https://facebook.com/sysinfopro" target="_blank"><i class="fab fa-facebook"></i> Facebook</a>
+        </div>
+    </footer>
+
+    <script>
+        function closeNotification() {
+            document.getElementById('offer-notification').style.display = 'none';
+        }
+    </script>
+</body>
+</html>
