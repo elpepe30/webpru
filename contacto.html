@@ -1,0 +1,362 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Contacto - Sistemas Informáticos</title>
+    <link rel="stylesheet" href="styles.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css">
+</head>
+<body>
+    <header>
+        <nav>
+            <div class="logo">SysInfo Pro</div>
+            <ul class="nav-links">
+                <li><a href="index.html">Inicio</a></li>
+                <li><a href="servicios.html">Servicios</a></li>
+                <li><a href="ofertas.html">Ofertas</a></li>
+                <li><a href="herramientas.html">Herramientas</a></li>
+                <li><a href="contacto.html">Contacto</a></li>
+            </ul>
+        </nav>
+    </header>
+
+    <div class="discount-badge" id="offer-notification">
+        <span>Código: SYSINFO30</span>
+        <button onclick="closeNotification()">×</button>
+    </div>
+
+    <section class="contact">
+        <h2>Contáctanos</h2>
+        <p>Estamos aquí para ayudarte. Envíanos un mensaje y te responderemos lo antes posible.</p>
+        <form id="contact-form" class="contact-form">
+            
+            <div class="form-group">
+                <label for="contact-name">Nombre completo *</label>
+                <input type="text" id="contact-name" placeholder="Tu nombre" required>
+                <span class="error-msg" id="error-name"></span>
+                <span class="success-check" id="check-name">✓</span>
+            </div>
+
+            <div class="form-group">
+                <label for="contact-email">Email *</label>
+                <input type="email" id="contact-email" placeholder="tu@email.com" required>
+                <span class="error-msg" id="error-email"></span>
+                <span class="success-check" id="check-email">✓</span>
+            </div>
+
+            <div class="form-group">
+                <label for="contact-technologies">Tecnologías/Lenguajes</label>
+                <input type="text" id="contact-technologies" placeholder="Ej: HTML, CSS, JavaScript, PHP, MySQL...">
+                <span class="error-msg" id="error-technologies"></span>
+                <span class="success-check" id="check-technologies">✓</span>
+            </div>
+
+            <div class="form-group">
+                <label for="contact-service">Tipo de Servicio *</label>
+                <select id="contact-service" required>
+                    <option value="">-- Selecciona un servicio --</option>
+                    <option value="desarrollo">Desarrollo Web</option>
+                    <option value="soporte">Soporte Técnico</option>
+                    <option value="mantenimiento">Mantenimiento</option>
+                    <option value="consultoría">Consultoría</option>
+                    <option value="otro">Otro</option>
+                </select>
+                <span class="error-msg" id="error-service"></span>
+            </div>
+
+            <div class="form-group">
+                <label for="contact-subject">Asunto *</label>
+                <input type="text" id="contact-subject" placeholder="Tema de tu consulta" required>
+                <span class="error-msg" id="error-subject"></span>
+                <span class="success-check" id="check-subject">✓</span>
+            </div>
+
+            <div class="form-group">
+                <label for="contact-msg">Mensaje *</label>
+                <textarea id="contact-msg" rows="6" placeholder="Cuéntanos con detalle tu consulta..." required></textarea>
+                <span class="char-count"><span id="msg-count">0</span>/500</span>
+                <span class="error-msg" id="error-msg"></span>
+                <span class="success-check" id="check-msg">✓</span>
+            </div>
+
+            <div class="form-actions">
+                <button type="button" onclick="sendContactWhatsApp()" class="btn btn-whatsapp">
+                    <i class="fab fa-whatsapp"></i> Enviar por WhatsApp
+                </button>
+                <button type="reset" class="btn btn-reset">Limpiar</button>
+            </div>
+
+            <div class="form-message" id="form-message"></div>
+        </form>
+    </section>
+
+    <footer>
+        <p>&copy; 2026 SysInfo Pro. Todos los derechos reservados. | Contacto: info@sysinfopro.com | Tel: 8492844996</p>
+        <div class="social-links">
+            <a href="https://wa.me/0" target="_blank"><i class="fab fa-whatsapp"></i> WhatsApp</a>
+            <a href="https://instagram.com/sysinfopro" target="_blank"><i class="fab fa-instagram"></i> Instagram</a>
+            <a href="https://facebook.com/sysinfopro" target="_blank"><i class="fab fa-facebook"></i> Facebook</a>
+        </div>
+    </footer>
+
+    <script>
+        // Cerrar notificación
+        function closeNotification() {
+            document.getElementById('offer-notification').style.display = 'none';
+        }
+
+        // Detectar servicio desde URL y preseleccionar
+        function autoSelectService() {
+            const params = new URLSearchParams(window.location.search);
+            const servicio = params.get('servicio');
+            
+            if (servicio) {
+                const serviceSelect = document.getElementById('contact-service');
+                const options = serviceSelect.querySelectorAll('option');
+                
+                // Mapear parámetros a opciones del select
+                const serviceMap = {
+                    'desarrollo': 'desarrollo',
+                    'soporte': 'soporte',
+                    'mantenimiento': 'mantenimiento',
+                    'consultoría': 'consultoría'
+                };
+                
+                if (serviceMap[servicio]) {
+                    serviceSelect.value = serviceMap[servicio];
+                    serviceSelect.style.borderColor = '#28a745';
+                    serviceSelect.style.backgroundColor = '#f0f8f5';
+                    
+                    // Mostrar notificación de que el servicio fue preseleccionado
+                    const subject = document.getElementById('contact-subject');
+                    subject.focus();
+                }
+            }
+        }
+
+        // Ejecutar cuando el DOM esté listo
+        window.addEventListener('DOMContentLoaded', autoSelectService);
+
+        // Validación de formulario
+        const form = document.getElementById('contact-form');
+        const inputs = {
+            name: document.getElementById('contact-name'),
+            email: document.getElementById('contact-email'),
+            phone: document.getElementById('contact-phone'),
+            technologies: document.getElementById('contact-technologies'),
+            service: document.getElementById('contact-service'),
+            subject: document.getElementById('contact-subject'),
+            msg: document.getElementById('contact-msg')
+        };
+
+        // Validación en tiempo real
+        inputs.name.addEventListener('input', function() {
+            validateName();
+        });
+
+        inputs.email.addEventListener('input', function() {
+            validateEmail();
+        });
+
+        inputs.phone.addEventListener('input', function() {
+            validatePhone();
+        });
+
+        inputs.technologies.addEventListener('input', function() {
+            validateTechnologies();
+        });
+
+        inputs.subject.addEventListener('input', function() {
+            validateSubject();
+        });
+
+        inputs.msg.addEventListener('input', function() {
+            validateMessage();
+            updateCharCount();
+        });
+
+        inputs.service.addEventListener('change', function() {
+            validateService();
+        });
+
+        // Funciones de validación
+        function validateName() {
+            const value = inputs.name.value.trim();
+            const errorEl = document.getElementById('error-name');
+            const checkEl = document.getElementById('check-name');
+            
+            if (value.length < 3) {
+                errorEl.textContent = 'El nombre debe tener al menos 3 caracteres';
+                checkEl.style.display = 'none';
+                inputs.name.classList.add('error');
+                return false;
+            } else {
+                errorEl.textContent = '';
+                checkEl.style.display = 'inline';
+                inputs.name.classList.remove('error');
+                return true;
+            }
+        }
+
+        function validateEmail() {
+            const value = inputs.email.value.trim();
+            const errorEl = document.getElementById('error-email');
+            const checkEl = document.getElementById('check-email');
+            const emailRegex = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
+            
+            if (!emailRegex.test(value)) {
+                errorEl.textContent = 'Email inválido';
+                checkEl.style.display = 'none';
+                inputs.email.classList.add('error');
+                return false;
+            } else {
+                errorEl.textContent = '';
+                checkEl.style.display = 'inline';
+                inputs.email.classList.remove('error');
+                return true;
+            }
+        }
+
+        function validatePhone() {
+            const value = inputs.phone.value.trim();
+            const errorEl = document.getElementById('error-phone');
+            const checkEl = document.getElementById('check-phone');
+            
+            if (value.length > 0 && (value.length < 9 || !/^\d+$/.test(value))) {
+                errorEl.textContent = 'Teléfono inválido (mínimo 9 dígitos)';
+                checkEl.style.display = 'none';
+                inputs.phone.classList.add('error');
+                return false;
+            } else {
+                errorEl.textContent = '';
+                if (value.length > 0) checkEl.style.display = 'inline';
+                inputs.phone.classList.remove('error');
+                return true;
+            }
+        }
+
+        function validateTechnologies() {
+            const value = inputs.technologies.value.trim();
+            const errorEl = document.getElementById('error-technologies');
+            const checkEl = document.getElementById('check-technologies');
+            
+            if (value.length > 0 && value.length < 2) {
+                errorEl.textContent = 'Especifica al menos 2 caracteres';
+                checkEl.style.display = 'none';
+                inputs.technologies.classList.add('error');
+                return false;
+            } else {
+                errorEl.textContent = '';
+                if (value.length > 0) checkEl.style.display = 'inline';
+                inputs.technologies.classList.remove('error');
+                return true;
+            }
+        }
+
+        function validateService() {
+            const value = inputs.service.value;
+            const errorEl = document.getElementById('error-service');
+            
+            if (!value) {
+                errorEl.textContent = 'Selecciona un servicio';
+                inputs.service.classList.add('error');
+                return false;
+            } else {
+                errorEl.textContent = '';
+                inputs.service.classList.remove('error');
+                return true;
+            }
+        }
+
+        function validateSubject() {
+            const value = inputs.subject.value.trim();
+            const errorEl = document.getElementById('error-subject');
+            const checkEl = document.getElementById('check-subject');
+            
+            if (value.length < 5) {
+                errorEl.textContent = 'El asunto debe tener al menos 5 caracteres';
+                checkEl.style.display = 'none';
+                inputs.subject.classList.add('error');
+                return false;
+            } else {
+                errorEl.textContent = '';
+                checkEl.style.display = 'inline';
+                inputs.subject.classList.remove('error');
+                return true;
+            }
+        }
+
+        function validateMessage() {
+            const value = inputs.msg.value.trim();
+            const errorEl = document.getElementById('error-msg');
+            const checkEl = document.getElementById('check-msg');
+            
+            if (value.length < 10) {
+                errorEl.textContent = 'El mensaje debe tener al menos 10 caracteres';
+                checkEl.style.display = 'none';
+                inputs.msg.classList.add('error');
+                return false;
+            } else if (value.length > 500) {
+                errorEl.textContent = 'El mensaje no puede exceder 500 caracteres';
+                checkEl.style.display = 'none';
+                inputs.msg.classList.add('error');
+                return false;
+            } else {
+                errorEl.textContent = '';
+                checkEl.style.display = 'inline';
+                inputs.msg.classList.remove('error');
+                return true;
+            }
+        }
+
+        function updateCharCount() {
+            const count = inputs.msg.value.length;
+            document.getElementById('msg-count').textContent = count;
+        }
+
+        // Validar todo el formulario
+        function validateForm() {
+            return validateName() && validateEmail() && validatePhone() && 
+                   validateTechnologies() && validateService() && validateSubject() && validateMessage();
+        }
+
+        // Enviar por WhatsApp
+        function sendContactWhatsApp() {
+            if (!validateForm()) {
+                showMessage('Por favor, completa correctamente todos los campos requeridos.', 'error');
+                return;
+            }
+
+            const name = inputs.name.value;
+            const email = inputs.email.value;
+            const phone = inputs.phone.value || 'No especificado';
+            const technologies = inputs.technologies.value || 'No especificado';
+            const service = inputs.service.value;
+            const subject = inputs.subject.value;
+            const msg = inputs.msg.value;
+
+            const text = `*Nuevo contacto desde la web*\n\n*Nombre:* ${name}\n*Email:* ${email}\n*Teléfono:* ${phone}\n*Tecnologías:* ${technologies}\n*Servicio:* ${service}\n*Asunto:* ${subject}\n\n*Mensaje:*\n${msg}`;
+            const url = `https://wa.me/0?text=${encodeURIComponent(text)}`;
+            
+            showMessage('Redirigiendo a WhatsApp...', 'success');
+            setTimeout(() => {
+                window.open(url, '_blank');
+            }, 500);
+        }
+
+        function showMessage(text, type) {
+            const msgEl = document.getElementById('form-message');
+            msgEl.textContent = text;
+            msgEl.className = `form-message ${type}`;
+            
+            if (type === 'success') {
+                setTimeout(() => {
+                    msgEl.textContent = '';
+                    msgEl.className = 'form-message';
+                }, 3000);
+            }
+        }
+    </script>
+</body>
+</html>
